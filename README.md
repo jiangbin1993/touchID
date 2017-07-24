@@ -2,7 +2,7 @@
 
 
 
-##LAError
+## LAError
 
 这是一个枚举，总共十个错误的类型，在验证失败后返回。
 
@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, LAError)
 ```
 
 
-##LAPolicy
+## LAPolicy
 
 同样是一个枚举，有两个值
 
@@ -40,7 +40,7 @@ LAPolicyDeviceOwnerAuthentication // 使用TouchID或者密码验证,默认是�
 
 指纹功能被锁后，锁屏后再解锁即可解除锁定。
 
-##LocalAuthentication.h
+## LocalAuthentication.h
 导入框架#import <LocalAuthentication/LocalAuthentication.h>
 
 声明LAContext属性
@@ -61,19 +61,19 @@ localizedFallbackTitle属性不设置或者设置为nil，第二个按钮默认�
 
 
 
-如果想自定义第二个按钮的标题，就为localizedFallbackTitle属性设置值。``_context.localizedFallbackTitle = @"芝麻开门";``
+如果想自定义第二个按钮的标题，就为localizedFallbackTitle属性设置值。```_context.localizedFallbackTitle = @"芝麻开门";```
 
 
 ![自定义标题.png](http://upload-images.jianshu.io/upload_images/2541004-37b6baac8475549b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-如果不想有第二个按钮的话，可以把localizedFallbackTitle设置为空字符串。``_context.localizedFallbackTitle = @"";``
+如果不想有第二个按钮的话，可以把localizedFallbackTitle设置为空字符串。```_context.localizedFallbackTitle = @"";```
 
 ![没有第二个按钮.png](http://upload-images.jianshu.io/upload_images/2541004-a67b4ad9b71a484b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
-###指纹认证初始化和判断
+### 指纹认证初始化和判断
 
 ```
 //本地认证上下文联系对象
@@ -106,11 +106,13 @@ localizedFallbackTitle属性不设置或者设置为nil，第二个按钮默认�
     }
 ```
 
-####开始指纹认证
+#### 开始指纹认证
 核心代码：
-```- (void)evaluatePolicy:(LAPolicy)policy
+```
+- (void)evaluatePolicy:(LAPolicy)policy
        localizedReason:(NSString *)localizedReason
-                 reply:(void(^)(BOOL success, NSError * __nullable error))reply;```
+                 reply:(void(^)(BOOL success, NSError * __nullable error))reply;
+```
 
 **第一个参数是枚举，有两个值：**
 ```
@@ -127,7 +129,7 @@ LAPolicyDeviceOwnerAuthentication // 使用TouchID或者密码验证,默认是�
 ![验证原因.png](http://upload-images.jianshu.io/upload_images/2541004-924088b786b4bbfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-#####详细代码：
+##### 详细代码：
 ```
 // 开始指纹验证
 - (void)beginTouchId{
@@ -210,10 +212,10 @@ LAPolicyDeviceOwnerAuthentication // 使用TouchID或者密码验证,默认是�
         });
         
     }];
-}
+  }
 ```
 
-###指纹认证被锁处理
+### 指纹认证被锁处理
 ```
 // 指纹验证被锁后调用输入密码解锁
 - (void)touchIdIsLocked{

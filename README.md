@@ -12,7 +12,7 @@ LAPolicyDeviceOwnerAuthentication // 使用TouchID或者密码验证,默认是�
 第二个枚举值，用户验证失败3次会自动弹出系统密码验证，如果系统密码验证通过也算成功。如果在系统密码验证的时候取消，下次再打开指纹验证功能依然会验证系统密码，而不是验证指纹。
 
 
-###因为LAPolicy有两种不同类型，下面就以两种方式分别来实现指纹验证。
+### 因为LAPolicy有两种不同类型，下面就以两种方式分别来实现指纹验证。
 
 首先导入框架#import <LocalAuthentication/LocalAuthentication.h>
 
@@ -23,9 +23,9 @@ LAPolicyDeviceOwnerAuthentication // 使用TouchID或者密码验证,默认是�
 ```
 
 
-##代码：
+## 代码：
 
-###方式一
+### 方式一
 
 初始化对象，并验证是否有指纹验证功能
 
@@ -123,7 +123,7 @@ LAPolicyDeviceOwnerAuthentication // 使用TouchID或者密码验证,默认是�
 }
 ```
 
-#####参数解释：
+##### 参数解释：
 
 
 **localizedFallbackTitle属性设置的是指纹验证错误后第二个按钮的文字。**
@@ -146,8 +146,8 @@ localizedFallbackTitle属性不设置或者设置为nil，第二个按钮默认�
 ![没有第二个按钮.png](http://upload-images.jianshu.io/upload_images/2541004-a67b4ad9b71a484b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-
-####调用指纹验证功能核心代码：
+ 
+#### 调用指纹验证功能核心代码：
 ```
 - (void)evaluatePolicy:(LAPolicy)policy
        localizedReason:(NSString *)localizedReason
@@ -188,7 +188,7 @@ typedef NS_ENUM(NSInteger, LAError)
 
 >----------------------------------------我是分割线--------------------------------
 
-##方式二
+## 方式二
 
 初始化对象，并验证是否有指纹验证功能
 ```
@@ -325,7 +325,7 @@ typedef NS_ENUM(NSInteger, LAError)
 
 >-----------------------------------我是分割线---------------------------------
 
-#####两种方式的比较
+##### 两种方式的比较
 
 1.方式一少了三个错误码，LAErrorUserFallback（用户选择输入密码），LAErrorAuthenticationFailed(连续三次指纹识别错误)和LAErrorTouchIDLockout（连续五次指纹识别错误，TouchID功能被锁定）。
 what?没有LAErrorUserFallback（用户选择输入密码），如果用户点击了输入密码按钮会怎么办呢？不要急，这时候会自动调起输入系统密码功能的。
@@ -336,7 +336,7 @@ what?没有LAErrorUserFallback（用户选择输入密码），如果用户点�
 
 3.很显然方式一比方式二更简单方便。如果没有特殊的业务需求，推荐用方式一来实现指纹识别功能。
 
-#####小知识：
+##### 小知识：
 
 1.指纹验证功能被锁是通用的，也就是说在一个地方指纹验证功能被锁了，在其他地方的指纹验证都会被锁起来。
 

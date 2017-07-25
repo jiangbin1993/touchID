@@ -164,7 +164,7 @@ LAPolicyDeviceOwnerAuthentication // 使用TouchID或者密码验证,默认是�
 
 ![验证原因.png](http://upload-images.jianshu.io/upload_images/2541004-924088b786b4bbfb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-**第三个参数reply是回调处理。内含两个回调参数success和error。
+**第三个参数reply是回调处理。内含两个回调参数success和error。**
 success是BOOL值，YES表示验证成功，NO表示验证失败。
 error是一个枚举，总共十个错误的类型，在验证失败后返回。
 
